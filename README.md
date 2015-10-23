@@ -1,6 +1,4 @@
 # papers.gersteinlab.org
-<<<<<<< HEAD
-=======
 
 This is a GitHub repository for papers page scripts used to generate http://papers.gersteinlab.org/
 
@@ -12,4 +10,3 @@ Contains the following directories from lectures.gersteinlab.org
 * /var/www
 * /var/www/cgi-bin
 * /var/www/html/papers/update
->>>>>>> 0eac62f3b82105c3fa68bf9c0c3dd6cb1b26a246
