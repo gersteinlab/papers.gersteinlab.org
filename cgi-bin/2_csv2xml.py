@@ -11,7 +11,7 @@ print
 ##############################
 
 ###
-### build pubmed query from csv file and save pubmed results as xml
+### build pubmed query from master gsheet csv file and save raw pubmed results as xml (pubmed.xml)
 ###
 
 ##############################
@@ -42,7 +42,7 @@ def system_call(command):
 	out, err = p.communicate()
 	print out
     
-csv_file = "/var/www/html/papers/update/master_gsheet.csv"
+csv_file = "../html/papers/update/master_gsheet.csv"
 curl = "/usr/bin/curl"
 
 print "Building a PubMed query"
@@ -51,7 +51,7 @@ query = buildQuery(csv_file)
 print query
 print
 
-xml_file = "/var/www/html/papers/update/NCBIData.xml"
+xml_file = "../html/papers/update/pubmed.xml"
 cmd = curl+" '"+query+"' > "+xml_file
 
 print "Downloading PubMed results as XML"

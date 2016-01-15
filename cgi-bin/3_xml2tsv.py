@@ -11,7 +11,7 @@ print
 ##############################
 
 ###
-### build pubmed query from csv file
+### from raw pubmed xml file (pubmed.xml), parse data and clean up for non-ascii characters
 ###
 
 ##############################
@@ -42,9 +42,9 @@ def unicode2ascii(input_file, output_file):
 			out.write(normalized+"\n")
 	out.close()
 
-xml_file = "/var/www/html/papers/update/NCBIData.xml"
-tmp_file = "/var/www/html/papers/update/export.tmp"
-tsv_file = "/var/www/html/papers/update/export.tsv"
+xml_file = "../html/papers/update/pubmed.xml"
+tmp_file = "../html/papers/update/pubmed.tmp"
+tsv_file = "../html/papers/update/pubmed.tsv"
 
 print "Parsing XML to TSV file"
 parse(xml_file, tmp_file)
