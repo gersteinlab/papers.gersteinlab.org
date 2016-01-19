@@ -120,6 +120,16 @@ def mergeData(master, pubmed):
                     row['volume'] = pubmed_row['Volume'].lstrip("#")
                     row['pmcid'] = pubmed_row['PMCID']
 
+def write2csv(master):
+
+    # write to CSV
+    with open("../html/papers/update/merged.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow( ('labid', 'PMID', 'title', 'citation', 'preprint', 'subject', 'website', 'Year', 'footnote', 'website2', 'coreTool') )
+
+        for row in master:
+            writer.writerow( (row['labid'],  row['PMID'], row['title'], row['citation'], row['preprint'], row['subject'], row['website'], row['Year'], row['footnote'], row['website2'], row['coreTool']) )
+
 def printLink(row):
     out = ""
     out += "<DIV CLASS=\"paperCite\">"
@@ -332,14 +342,32 @@ def printPaperEntry(row, summaryFile, pubmed):
 
 def printSimpleEntry(row, simpleFile, pubmed):
 
+    out = '<P style="line-height: 6pt "><DL COMPACT>'
+
     if row['PMID']:
-        out = '<P style="line-height: 6pt "><DL COMPACT>"'+row['title'].lstrip('\'')+'" '+row['citation'].lstrip('\'')+' <FONT SIZE=-2>[PMID: '+row['PMID'].lstrip('\'')+']'
+
+        citation_simple = row['citation'].replace(row['authors']+" ("+row['Year']+"). ","")
+        out += row['authors']+" ("+row['Year']+"). <b><i>"+row['title']+"</i></b> "+citation_simple
+
+        # add PMID
+        out += ' <FONT SIZE=-1>[PMID: '+row['PMID']+']'
+        # add PMCID if available
         if row.has_key('pmcid') and row['pmcid']:
-            out += '[PMCID: '+row['pmcid']+']</FONT></DL></P>\n'
-        else:
-            out += '</FONT></DL></P>\n'
+            out += '[PMCID: '+row['pmcid']+']'
+        out += '</FONT>\n'
+
     else:
-        out = '<P style="line-height: 6pt "><DL COMPACT>"'+row['title'].lstrip('\'')+'" '+row['citation'].lstrip('\'')+'</DL></P>\n'
+        # check if manually-written citation is in correct format
+        if "). " not in row['citation']:
+            print "Warning: Citation format incompatible. Please use the format: authors (year). <i>journal</i> issue: page."
+            print row['citation']
+            out += "<b><i>"+row['title']+'</i></b> '+row['citation']
+        else:
+            author_year = row['citation'].split(").")[0]+"). "
+            citation_simple = row['citation'].split("). ")[1]
+            out += author_year+" <b><i>"+row['title']+'</i></b> '+citation_simple
+
+    out += '</DL></P>\n'
 
     simpleFile.write(out)
 
@@ -491,12 +519,24 @@ function showdh(n){
 
 ### MAIN ###
 
+print "Merging master Google spreadsheet and PubMed data.."
 mergeData(master_spreadsheet, pubmed_spreadsheet)
+
+print "Saving merged data as CSV file: merged.csv"
+write2csv(master_spreadsheet)
+
+print "Building Subject Summary HTML files.."
 printSubjectSummary(subject_spreadsheet, header)
+
+print "Building Subject HTML files.."
 printSubject(master_spreadsheet, header)
+
+print "Building Paper HTML files.."
 printPapers(summaryFile, header)
 
 # Fix permissions to make both apache and sudo users run updates
+print "Fixing permissions for HTML files.."
 os.system("chmod -R 775 ../html/papers/papers")
 
+print ""
 print "Done"

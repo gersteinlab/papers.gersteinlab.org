@@ -54,7 +54,7 @@ print
 xml_file = "../html/papers/update/pubmed.xml"
 cmd = curl+" '"+query+"' > "+xml_file
 
-print "Downloading PubMed results as XML"
+print "Downloading PubMed results as XML.. Please Wait.."
 print
 
 system_call(cmd)
