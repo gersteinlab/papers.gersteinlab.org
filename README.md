@@ -14,7 +14,11 @@ Contains the following directories from lectures.gersteinlab.org
 ## Execution
 
 1. http://dev.papers.gersteinlab.org/cgi-bin/1_gsheet2csv.py
-- http://dev.papers.gersteinlab.org/update/master_gsheet.csv
+⋅⋅* http://dev.papers.gersteinlab.org/update/master_gsheet.csv
+⋅⋅* http://dev.papers.gersteinlab.org/update/subject_gsheet.csv
 2. http://dev.papers.gersteinlab.org/cgi-bin/2_csv2xml.py
+⋅⋅* http://dev.papers.gersteinlab.org/update/pubmed.xml
 3. http://dev.papers.gersteinlab.org/cgi-bin/3_xml2tsv.py
+⋅⋅* http://dev.papers.gersteinlab.org/update/pubmed.tsv
 4. http://dev.papers.gersteinlab.org/cgi-bin/4_update.py
+⋅⋅* http://dev.papers.gersteinlab.org/update/merged.csv
