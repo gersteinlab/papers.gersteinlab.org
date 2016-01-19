@@ -1,1 +1,14 @@
-*.pycc
+*.pyc
+html/papers/papers/
+html/papers/subject/
+html/papers/*.html
+html/papers/update/*.csv
+html/papers/update/*.tmp
+html/papers/update/*.tsv
+html/papers/update/*.xml
+html/papers/e-print
+html/papers/e-print2/
+html/papers/*.jpg
+html/papers/*.gif
+error/
+icons/
