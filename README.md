@@ -20,6 +20,14 @@ Contains the following directories from lectures.gersteinlab.org
 * Production server (lectures.gersteinlab.org) is synced with development via Git
 
 ### How to Execute
+
+#### Quick update
+
+* Rebuild batch script, which executes STEP 1 to 4
+ * **Executable: http://dev.papers.gersteinlab.org/cgi-bin/rebuild.py** 
+
+#### Step-by-step update
+
 * STEP 1. Download Master Google spreadsheet as a CSV file
  * **Executable: http://dev.papers.gersteinlab.org/cgi-bin/1_gsheet2csv.py**
  * CSV output 1: http://dev.papers.gersteinlab.org/update/master_gsheet.csv
