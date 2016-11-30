@@ -21,7 +21,7 @@ import os
 import subprocess
 
 def buildQuery(csv_file):
-	start = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id="
+	start = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id="
 	pmids = ''
 	end = "&rettype=xml&retmode=file"
 	with open(csv_file) as csvfile:
