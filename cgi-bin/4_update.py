@@ -192,6 +192,7 @@ def printPapers(summaryFile, header):
 
     summaryFile.write("</BODY>\n</HTML>")
     simpleFile.write("</BODY>\n</HTML>")
+    simpleFile2.write("</BODY>\n</HTML>")	
 
 def printEntrySummary(row, header, pubmed):
 
@@ -347,7 +348,7 @@ def printSimpleEntry(row, simpleFile, pubmed):
     if row['PMID']:
 
         citation_simple = row['citation'].replace(row['authors']+" ("+row['Year']+"). ","")
-        out += row['authors']+" ("+row['Year']+"). <b><i>"+row['title']+"</i></b> "+citation_simple
+        out += row['authors']+" ("+row['Year']+"). <q><i>"+row['title']+"</i></q> "+citation_simple
 
         # add PMID
         out += ' <FONT SIZE=-1>[PMID: '+row['PMID']+']'
@@ -361,11 +362,11 @@ def printSimpleEntry(row, simpleFile, pubmed):
         if "). " not in row['citation']:
             print "Warning: Citation format incompatible. Please use the format: authors (year). <i>journal</i> issue: page."
             print row['citation']
-            out += "<b><i>"+row['title']+'</i></b> '+row['citation']
+            out += "<q><i>"+row['title']+'</i></q> '+row['citation']
         else:
             author_year = row['citation'].split(").")[0]+"). "
             citation_simple = row['citation'].split("). ")[1]
-            out += author_year+" <b><i>"+row['title']+'</i></b> '+citation_simple
+            out += author_year+" <q><i>"+row['title']+'</i></q> '+citation_simple
 
     out += '</DL></P>\n'
 
