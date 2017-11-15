@@ -34,7 +34,7 @@ subjectPath = "../html/papers/subject/"
 subjectFile = open("../html/papers/subject/index.html", 'w')
 subjectSummaryFile = open("../html/papers/subject/index.html", 'w')
 
-header = '''<STYLE TYPE="text/css">
+header = '''<style type="text/css">
 A { text-decoration:none; }
 .headerMenu A:link { color:#993333; }
 .headerMenu A:visited { color:#993333; }
@@ -53,7 +53,9 @@ div#null a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;co
 div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#3ba63c;padding:1px 3px;margin:2px;border:2px solid #3ba63c;}
 div#preprint a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#349;padding:1px 3px;margin:2px;border:2px solid #349;}
 div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;width:0;height:0;margin:5 0 0 2;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #F0EEE4;}
-</STYLE>
+</style>
+<link rel="stylesheet" href="style.css">
+<!-- google analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -62,10 +64,19 @@ div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:
 
   ga('create', 'UA-72218887-2', 'auto');
   ga('send', 'pageview');
-
 </script>
 </HEAD>
 <BODY BGCOLOR="white">
+    <div id="global-title-container">
+        <div id="title-wrapper" class="clearfix">
+            <div id="title-left">
+                <a href="http://www.gersteinlab.org/"><strong>Gerstein</strong> Lab</a>
+            </div>
+            <div id="title-right">
+                <a href="http://cbb.yale.edu/">Bioinformatics</a>
+            </div>
+        </div>
+    </div>
 <CENTER>
 <BR>
 <FONT SIZE=+2 FACE='sans-serif, Arial, Helvetica' COLOR="#334499">Gerstein Lab Publications</FONT>
@@ -157,9 +168,11 @@ def printPapers(summaryFile, header):
     out += "\n"
     out += "<CENTER>\n"
     out += "<FONT FACE='sans-serif, Arial, Helvetica'><FONT SIZE=+2 COLOR=993333>Main Scientific Publications</FONT>\n"
-    out += "\n"
+    out += "<br><br>\n"
     out += "<H3><FONT SIZE=\"4\" COLOR=\"#334499\">Total papers: " + str(len(master_spreadsheet)) + "</FONT></H3></FONT>\n"
+    out += "<br>\n"
     out += "<p>(Last updated " + timestamp + ")</CENTER>\n"
+    out += "<br>\n"
 
     years = {}
     currentYear = 0
@@ -175,7 +188,9 @@ def printPapers(summaryFile, header):
         pubmed = pubmed_spreadsheet
         if currentYear != row['Year']:
             currentYear = row['Year']
+            out += "<br>\n"
             out += "<H3 ALIGN=center><FONT FACE='arial,helvetica,sans-serif' COLOR=000000 SIZE=4>-- " + currentYear + " ("+str(years[currentYear])+") --</FONT></H3>\n"
+            out += "<br>\n"
         summaryFile.write(out)
         simpleFile.write(out)
         simpleFile2.write(out)
