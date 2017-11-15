@@ -188,7 +188,6 @@ def printPapers(summaryFile, header):
         pubmed = pubmed_spreadsheet
         if currentYear != row['Year']:
             currentYear = row['Year']
-            out += "<br>\n"
             out += "<H3 ALIGN=center><FONT FACE='arial,helvetica,sans-serif' COLOR=000000 SIZE=4>-- " + currentYear + " ("+str(years[currentYear])+") --</FONT></H3>\n"
             out += "<br>\n"
         summaryFile.write(out)
