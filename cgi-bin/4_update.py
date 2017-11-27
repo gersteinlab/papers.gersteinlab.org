@@ -81,8 +81,9 @@ div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:
 <!--
 <BR>
 <FONT SIZE=+2 FACE='sans-serif, Arial, Helvetica' COLOR="#334499">Gerstein Lab Publications</FONT>
+<BR>
 -->
-<BR><BR>
+<BR>
 <!-- Buttons for individual sections -->
 <FONT FACE='sans-serif, Arial, Helvetica' COLOR="#993333">
 <SPAN CLASS="headerMenu"><A HREF="/">Main</A></SPAN>
