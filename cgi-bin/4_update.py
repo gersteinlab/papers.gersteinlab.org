@@ -78,8 +78,10 @@ div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:
         </div>
     </div>
 <CENTER>
+<!--
 <BR>
 <FONT SIZE=+2 FACE='sans-serif, Arial, Helvetica' COLOR="#334499">Gerstein Lab Publications</FONT>
+-->
 <BR><BR>
 <!-- Buttons for individual sections -->
 <FONT FACE='sans-serif, Arial, Helvetica' COLOR="#993333">
