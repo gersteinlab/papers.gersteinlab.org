@@ -34,7 +34,8 @@ subjectPath = "../html/papers/subject/"
 subjectFile = open("../html/papers/subject/index.html", 'w')
 subjectSummaryFile = open("../html/papers/subject/index.html", 'w')
 
-header = '''<style type="text/css">
+header = '''<link rel="stylesheet" href="/style.css">
+<style type="text/css">
 A { text-decoration:none; }
 .headerMenu A:link { color:#993333; }
 .headerMenu A:visited { color:#993333; }
@@ -54,7 +55,6 @@ div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left
 div#preprint a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#349;padding:1px 3px;margin:2px;border:2px solid #349;}
 div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;width:0;height:0;margin:5 0 0 2;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #F0EEE4;}
 </style>
-<link rel="stylesheet" href="/style.css">
 <!-- google analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
