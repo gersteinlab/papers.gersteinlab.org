@@ -363,3 +363,15 @@ button {  width: auto; overflow: visible; }
   html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } 
 }
 
+/*
+ * Specific to papers page
+ */
+
+.unsel{background-color:#ffffff; background-position:top; background-repeat:repeat-x; color:#FFFFFF; font-weight:normal;}
+.sel {background-color:#3b5998; color:#FFFFFF; font-weight:normal;}
+.content{background-color:#ffffff; height:25px; padding-left:20px; padding-right:20px; padding-top:20px;color:#ffffff;}
+a{text-decoration:none;color:#ffffff;}
+.unsel a:link {color:#888888;text-decoration:none;}
+.sel a:visited {color:#ffffff;text-decoration:none;}
+.sel a:active {color:#ffffff;text-decoration:none;}
+.sel a:hover {color:#ffffff;text-decoration:underline;}
