@@ -47,6 +47,7 @@ header = '''<link rel="stylesheet" href="/style.css">
 </script>
 </HEAD>
 <BODY BGCOLOR="white">
+<div id="header">
     <div id="global-title-container">
         <div id="title-wrapper" class="clearfix">
             <div id="title-left">
@@ -56,6 +57,7 @@ header = '''<link rel="stylesheet" href="/style.css">
                 <a href="http://cbb.yale.edu/">Bioinformatics</a>
             </div>
         </div>
+    </div>
 
 <CENTER>
 <!--
