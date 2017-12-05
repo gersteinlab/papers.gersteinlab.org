@@ -46,11 +46,14 @@ a {text-decoration:none;color:#ffffff;}
 	background-color: #FFFFFF;
 	position: fixed;
 	margin-top: 0px;
+	top: 0;
+	z-index: 10;
 }
 
 #content {
 	width: 100%;
 	margin-top: 100px;
+	z-index: 1;
 }
 
 /*
