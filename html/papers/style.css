@@ -169,6 +169,7 @@ button {  width: auto; overflow: visible; }
 #global-title-container {
 	width: 100%;
 	background-color: #1E60A8;
+	position: fixed;
 }
 	#title-wrapper {
 		width: 850px;
