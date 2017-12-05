@@ -40,6 +40,14 @@ a {text-decoration:none;color:#ffffff;}
 .sel a:active {color:#ffffff;text-decoration:none;}
 .sel a:hover {color:#ffffff;text-decoration:underline;}
 
+#header {
+  position: fixed;
+}
+
+#content {
+  margin-top: 100px;
+}
+
 /*
 fonts.css from the YUI Library: developer.yahoo.com/yui/
           Please refer to developer.yahoo.com/yui/fonts/ for font sizing percentages
