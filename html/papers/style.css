@@ -310,62 +310,28 @@ button {  width: auto; overflow: visible; }
 			font-size: 13px;
 		}
 
-		
-
-/* 
- * print styles
- * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
- */
-@media print {
-  * { background: transparent !important; color: #444 !important; text-shadow: none; }
-
-  a, a:visited { color: #444 !important; text-decoration: underline; }
-
-  a:after { content: " (" attr(href) ")"; } 
-
-  abbr:after { content: " (" attr(title) ")"; }
-  
-  .ir a:after { content: ""; }  /* Don't show links for images */
-  
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  
-  img { page-break-inside: avoid; }
-
-  @page { margin: 0.5cm; }
-
-  p, h2, h3 { orphans: 3; widows: 3; }
-
-  h2, h3{ page-break-after: avoid; }
-}
-
-
-
 /*
- * Media queries for responsive design
+ * Specific to Papers Page
  */
 
-@media all and (orientation:portrait) { 
-  /* Style adjustments for portrait mode goes here */
-  
-}
-
-@media all and (orientation:landscape) { 
-  /* Style adjustments for landscape mode goes here */
-  
-}
-
-/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
-   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
-  
-  
-  /* Prevent iOS, WinMobile from adjusting font size */
-  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } 
-}
-
-/*
- * Specific to papers page
- */
+A { text-decoration:none; }
+.headerMenu A:link { color:#993333; }
+.headerMenu A:visited { color:#993333; }
+.headerMenu A:active { color:#334499; }
+.headerMenu A:hover { color:#334499; }
+.headerMenu A:sansserif{ font-family:Arial,Helvetica,sans-serif; }
+.papersList { margin-left:0px; }
+.paperTitle { margin-left:50px; }
+.paperTitle A:link { color:#000000; }
+.paperTitle A:visited { color:#000000; }
+.paperTitle A:active { color:#000000; }
+.paperTitle A:hover { color:#000000; }
+.paperCite { margin-left:100px; }
+div#medline a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#933;padding:1px 3px;margin:2px;border:2px solid #933;}
+div#null a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#000;padding:1px 23px;margin:2px;border:2px solid #F0EEE4;}
+div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#3ba63c;padding:1px 3px;margin:2px;border:2px solid #3ba63c;}
+div#preprint a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#349;padding:1px 3px;margin:2px;border:2px solid #349;}
+div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;width:0;height:0;margin:5 0 0 2;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #F0EEE4;}
 
 .unsel{background-color:#ffffff; background-position:top; background-repeat:repeat-x; color:#FFFFFF; font-weight:normal;}
 .sel {background-color:#3b5998; color:#FFFFFF; font-weight:normal;}
