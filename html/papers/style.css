@@ -45,6 +45,7 @@ a {text-decoration:none;color:#ffffff;}
 	width: 100%;
 	background-color: #FFFFFF;
 	position: fixed;
+	margin-top: 0px;
 }
 
 #content {
