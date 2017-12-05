@@ -46,7 +46,7 @@ header = '''<link rel="stylesheet" href="/style.css">
   ga('send', 'pageview');
 </script>
 </HEAD>
-<div class=\"header">
+<div id=\"header">
 <BODY BGCOLOR="white">
     <div id="global-title-container">
         <div id="title-wrapper" class="clearfix">
