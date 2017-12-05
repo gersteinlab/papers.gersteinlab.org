@@ -171,10 +171,10 @@ def printPapers(summaryFile, header):
     out += "\n"
     out += "<CENTER>\n"
     out += "<FONT FACE='sans-serif, Arial, Helvetica'><FONT SIZE=+2 COLOR=993333>Main Scientific Publications</FONT>\n"
-    out += "<br><br>\n"
+    out += "<br>\n"
     out += "<H3><FONT SIZE=\"4\" COLOR=\"#334499\">Total papers: " + str(len(master_spreadsheet)) + "</FONT></H3></FONT>\n"
     out += "<br>\n"
-    out += "<p>(Last updated " + timestamp + ")</CENTER>\n"
+    out += "(Last updated " + timestamp + ")</CENTER>\n"
     out += "<br>\n"
 
     years = {}
