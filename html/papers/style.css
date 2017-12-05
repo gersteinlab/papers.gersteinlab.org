@@ -41,11 +41,14 @@ a {text-decoration:none;color:#ffffff;}
 .sel a:hover {color:#ffffff;text-decoration:underline;}
 
 #header {
-  position: fixed;
+	width: 100%;
+	background-color: #FFFFFF;
+	position: fixed;
 }
 
 #content {
-  margin-top: 100px;
+	width: 100%;
+	margin-top: 100px;
 }
 
 /*
@@ -169,7 +172,6 @@ button {  width: auto; overflow: visible; }
 #global-title-container {
 	width: 100%;
 	background-color: #1E60A8;
-	position: fixed;
 }
 	#title-wrapper {
 		width: 850px;
