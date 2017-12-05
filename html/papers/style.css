@@ -68,12 +68,6 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
 body, select, input, textarea { color:#444; }
 
-/* Headers (h1,h2,etc) have no default font-size or margin,
-   you'll want to define those yourself. */ 
- 
-/* www.aestheticallyloyal.com/public/optimize-legibility/ */ 
-h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; }
-
 /* maxvoltar.com/archive/-webkit-font-smoothing */
 html { -webkit-font-smoothing: antialiased; }
 
@@ -82,7 +76,6 @@ a:hover, a:active { outline: none; }
 
 a, a:active, a:visited { color:#607890; }
 a:hover { color:#036; }
-
 
 ul { margin-left:30px; }
 ol { margin-left:30px; list-style-type: decimal; }
@@ -114,7 +107,6 @@ input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
 /* hand cursor on clickable input elements */
 label, input[type=button], input[type=submit], button { cursor: pointer; }
 
-
 /* These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301 
    Also: hot pink. */
@@ -134,8 +126,6 @@ button {  width: auto; overflow: visible; }
 /* bicubic resizing for non-native sized IMG: 
    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img { -ms-interpolation-mode: bicubic; }
-
-
 
 /* 
  * Non-semantic helper classes 
@@ -163,7 +153,6 @@ button {  width: auto; overflow: visible; }
 .clearfix { display: inline-block; }
 * html .clearfix { height: 1%; } /* Hides from IE-mac \*/
 .clearfix { display: block; }
-
 
  /* Primary Styles
     Author: David Z. Chen
