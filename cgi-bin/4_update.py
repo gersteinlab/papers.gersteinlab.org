@@ -82,7 +82,7 @@ header = '''<link rel="stylesheet" href="/style.css">
 	-->
 	<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
 </FONT>
-<BR>
+<BR><BR>
 </CENTER>
 
 </div>
