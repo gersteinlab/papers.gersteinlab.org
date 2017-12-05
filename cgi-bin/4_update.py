@@ -46,6 +46,7 @@ header = '''<link rel="stylesheet" href="/style.css">
   ga('send', 'pageview');
 </script>
 </HEAD>
+<div class=\"header">
 <BODY BGCOLOR="white">
     <div id="global-title-container">
         <div id="title-wrapper" class="clearfix">
@@ -81,6 +82,7 @@ header = '''<link rel="stylesheet" href="/style.css">
 <SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
 </FONT>
 </CENTER>
+</div>
 <HR>
 '''
 
