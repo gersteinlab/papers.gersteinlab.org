@@ -479,7 +479,7 @@ a{text-decoration:none;color:#ffffff;}
     out += "<TITLE>Gerstein Lab Publications</TITLE>\n"
     out += header
     out += "\n"
-    out += styleSubject
+#     out += styleSubject
     out += '<BODY onload="javascript:showdh(3);">\n'
     out += '<TABLE width="915" height="30" frame ="hsides" align="center" cellpadding="0" cellspacing="0">\n<TR>\n<TD width="6"></TD>\n'
 
