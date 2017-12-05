@@ -35,26 +35,6 @@ subjectFile = open("../html/papers/subject/index.html", 'w')
 subjectSummaryFile = open("../html/papers/subject/index.html", 'w')
 
 header = '''<link rel="stylesheet" href="/style.css">
-<style type="text/css">
-A { text-decoration:none; }
-.headerMenu A:link { color:#993333; }
-.headerMenu A:visited { color:#993333; }
-.headerMenu A:active { color:#334499; }
-.headerMenu A:hover { color:#334499; }
-.headerMenu A:sansserif{ font-family:Arial,Helvetica,sans-serif; }
-.papersList { margin-left:0px; }
-.paperTitle { margin-left:50px; }
-.paperTitle A:link { color:#000000; }
-.paperTitle A:visited { color:#000000; }
-.paperTitle A:active { color:#000000; }
-.paperTitle A:hover { color:#000000; }
-.paperCite { margin-left:100px; }
-div#medline a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#933;padding:1px 3px;margin:2px;border:2px solid #933;}
-div#null a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#000;padding:1px 23px;margin:2px;border:2px solid #F0EEE4;}
-div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#3ba63c;padding:1px 3px;margin:2px;border:2px solid #3ba63c;}
-div#preprint a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#349;padding:1px 3px;margin:2px;border:2px solid #349;}
-div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;width:0;height:0;margin:5 0 0 2;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #F0EEE4;}
-</style>
 <!-- google analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
