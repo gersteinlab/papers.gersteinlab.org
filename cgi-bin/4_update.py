@@ -67,7 +67,7 @@ header = '''<link rel="stylesheet" href="/style.css">
 -->
 <BR>
 <!-- Buttons for individual sections -->
-<FONT FACE='sans-serif, Arial, Helvetica' COLOR="#993333">
+<FONT SIZE=+1 FACE='sans-serif, Arial, Helvetica' COLOR="#993333">
 	<SPAN CLASS="headerMenu"><A HREF="/">Main</A></SPAN>
 	&nbsp;&#8226;&nbsp;
 	<SPAN CLASS="headerMenu"><A HREF="/subject">By Subject</A></SPAN>
