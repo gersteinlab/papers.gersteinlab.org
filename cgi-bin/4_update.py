@@ -68,24 +68,25 @@ header = '''<link rel="stylesheet" href="/style.css">
 <BR>
 <!-- Buttons for individual sections -->
 <FONT FACE='sans-serif, Arial, Helvetica' COLOR="#993333">
-<SPAN CLASS="headerMenu"><A HREF="/">Main</A></SPAN>
-&nbsp;&#8226;&nbsp;
-<SPAN CLASS="headerMenu"><A HREF="/subject">By Subject</A></SPAN>
-&nbsp;&#8226;&nbsp;
-<SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Pubmed_query">Queries</A></SPAN>
-&nbsp;&#8226;&nbsp;
-<SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Papers_Page_Code">Code</A></SPAN>
-&nbsp;&#8226;&nbsp;
-<!--
-<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Paper_search">Search</A></SPAN>
-&nbsp;&#8226;&nbsp;
--->
-<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
+	<SPAN CLASS="headerMenu"><A HREF="/">Main</A></SPAN>
+	&nbsp;&#8226;&nbsp;
+	<SPAN CLASS="headerMenu"><A HREF="/subject">By Subject</A></SPAN>
+	&nbsp;&#8226;&nbsp;
+	<SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Pubmed_query">Queries</A></SPAN>
+	&nbsp;&#8226;&nbsp;
+	<SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Papers_Page_Code">Code</A></SPAN>
+	&nbsp;&#8226;&nbsp;
+	<!--
+	<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Paper_search">Search</A></SPAN>
+	&nbsp;&#8226;&nbsp;
+	-->
+	<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
 </FONT>
+<BR>
 </CENTER>
 
 </div>
-<HR>
+<div id="content">
 '''
 
 def mergeData(master, pubmed):
@@ -191,9 +192,9 @@ def printPapers(summaryFile, header):
         printEntrySummary(row, header, pubmed)
         printEntryExtended(row, pubmed)
 
-    summaryFile.write("</BODY>\n</HTML>")
-    simpleFile.write("</BODY>\n</HTML>")
-    simpleFile2.write("</BODY>\n</HTML>")	
+    summaryFile.write("</DIV>\n</BODY>\n</HTML>")
+    simpleFile.write("</DIV>\n</BODY>\n</HTML>")
+    simpleFile2.write("</DIV>\n</BODY>\n</HTML>")	
 
 def printEntrySummary(row, header, pubmed):
 
@@ -408,7 +409,7 @@ def printSubject(master_spreadsheet, header):
             if include:
                 out += include
             subjectFile.write(out)
-            subjectFile.write('</FONT><HR><A HREF="/"><B>Return to front page</B></A>\n</BODY>\n</HTML>')
+            subjectFile.write('</FONT><HR><A HREF="/"><B>Return to front page</B></A>\n</DIV>\n</BODY>\n</HTML>')
             subjectFile.close()
 
     for i, subject in enumerate(allsubjects):
@@ -447,7 +448,7 @@ def printSubjectFile(subject, subject_papers):
     for paper_row in subject_papers:
         printSubjectEntry(master_spreadsheet[paper_row], subjectDetailFile)
 
-    subjectDetailFile.write('	</FONT><HR><A HREF="/"><B>Return to front page</B></A>\n</BODY>\n</HTML>')
+    subjectDetailFile.write('	</FONT><HR><A HREF="/"><B>Return to front page</B></A>\n</DIV>\n</BODY>\n</HTML>')
     subjectDetailFile.close()
 
 def printSubjectEntry(row, subjectDetailFile):
@@ -503,7 +504,7 @@ function showdh(n){
 }
 </script>
 '''
-    out += "</BODY>\n</HTML>"
+    out += "</DIV>\n</BODY>\n</HTML>"
     subjectSummaryFile.write(out)
 
 ### MAIN ###
