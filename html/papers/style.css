@@ -9,7 +9,8 @@
 */
 
 /*
- * Specific Styles to Papers Page
+ *	Specific Styles to Papers Page
+ *	Author: Donghoon Lee
  */
 
 A { text-decoration:none; }
@@ -165,8 +166,9 @@ button {  width: auto; overflow: visible; }
 * html .clearfix { height: 1%; } /* Hides from IE-mac \*/
 .clearfix { display: block; }
 
- /* Primary Styles
-    Author: David Z. Chen
+ /* 
+	Primary Styles
+	Author: David Z. Chen
  */
 
 #global-title-container {
