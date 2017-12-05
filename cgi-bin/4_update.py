@@ -458,19 +458,6 @@ def printSubjectEntry(row, subjectDetailFile):
 
 def printSubjectSummary(subject_spreadsheet, header):
 
-    styleSubject = '''<BR>
-<STYLE type="text/css">
-.unsel{background-color:#ffffff; background-position:top; background-repeat:repeat-x; color:#FFFFFF; font-weight:normal;}
-.sel {background-color:#3b5998; color:#FFFFFF; font-weight:normal;}
-.content{background-color:#ffffff; height:25px; padding-left:20px; padding-right:20px; padding-top:20px;color:#ffffff;}
-a{text-decoration:none;color:#ffffff;}
-.unsel a:link {color:#888888;text-decoration:none;}
-.sel a:visited {color:#ffffff;text-decoration:none;}
-.sel a:active {color:#ffffff;text-decoration:none;}
-.sel a:hover {color:#ffffff;text-decoration:underline;}
-</STYLE>
-'''
-
     category = ''
     SubjectNumber = 0
     outPart = ''
@@ -479,7 +466,7 @@ a{text-decoration:none;color:#ffffff;}
     out += "<TITLE>Gerstein Lab Publications</TITLE>\n"
     out += header
     out += "\n"
-#     out += styleSubject
+    out += "<BR>"
     out += '<BODY onload="javascript:showdh(3);">\n'
     out += '<TABLE width="915" height="30" frame ="hsides" align="center" cellpadding="0" cellspacing="0">\n<TR>\n<TD width="6"></TD>\n'
 
