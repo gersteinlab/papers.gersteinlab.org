@@ -34,8 +34,7 @@ subjectPath = "../html/papers/subject/"
 subjectFile = open("../html/papers/subject/index.html", 'w')
 subjectSummaryFile = open("../html/papers/subject/index.html", 'w')
 
-header = '''<link rel="stylesheet" href="/style.css">
-<style type="text/css">
+header = '''<style type="text/css">
 A { text-decoration:none; }
 .headerMenu A:link { color:#993333; }
 .headerMenu A:visited { color:#993333; }
