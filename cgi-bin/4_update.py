@@ -108,10 +108,11 @@ def mergeData(master, pubmed):
                         p = re.compile("\(\d+\)\.")
                         p2 = re.compile(":")
                         p3 = re.compile("&nbsp;")
-                        citation = p.sub("", citation)
-                        citation = p2.sub(": ", citation)
-                        citation = p3.sub(" ", citation)
-                        row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()
+                        citation = re.compile("\(\d+\)\.").sub("", citation)
+                        citation = re.compile(":").sub(": ", citation)
+                        citation = re.compile("&nbsp;").sub(" ", citation)
+			citation = re.compile("\.").sub("", citation)
+                        row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()+"."
 
                     row['authors'] = pubmed_row['Authors']
                     row['journal'] = pubmed_row['Journal']
