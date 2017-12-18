@@ -105,9 +105,6 @@ def mergeData(master, pubmed):
 
                         # get citation from pubmed
                         citation = pubmed_row['Citation']
-                        p = re.compile("\(\d+\)\.")
-                        p2 = re.compile(":")
-                        p3 = re.compile("&nbsp;")
                         citation = re.compile("\(\d+\)\.").sub("", citation)
                         citation = re.compile(":").sub(": ", citation)
                         citation = re.compile("&nbsp;").sub(" ", citation)
