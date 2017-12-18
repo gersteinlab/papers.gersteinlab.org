@@ -111,7 +111,7 @@ def mergeData(master, pubmed):
                         citation = p.sub("", citation)
                         citation = p2.sub(": ", citation)
                         citation = p3.sub(" ", citation)
-                        row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'')
+                        row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()
 
                     row['authors'] = pubmed_row['Authors']
                     row['journal'] = pubmed_row['Journal']
