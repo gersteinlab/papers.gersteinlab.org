@@ -65,11 +65,12 @@ There are three custom edits:
  * remove arial, helvetica from explicit font stack
  * make the line-height relative and unit-less
  * remove the pre, code styles
+*/
 
 body {
-	font:13px sans-serif;
-	*font-size:small;
-	*font:x-small;
+/* 	font:13px sans-serif; */
+/* 	*font-size:small; */
+/* 	*font:x-small; */
 	line-height:1.22;
 	width: 100%;
 	height: 100%;
@@ -81,7 +82,7 @@ table { font-size:inherit; font:100%; }
 
 select, input, textarea { font:99% sans-serif; }
 
-*/
+
 
 /* normalize monospace sizing 
  * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome
