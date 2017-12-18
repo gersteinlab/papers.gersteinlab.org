@@ -100,7 +100,7 @@ body, select, input, textarea { color:#444; }
 */
 
 /* maxvoltar.com/archive/-webkit-font-smoothing */
-html { -webkit-font-smoothing: antialiased; }
+/* html { -webkit-font-smoothing: antialiased; } */
 
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
