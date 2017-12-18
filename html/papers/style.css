@@ -93,8 +93,9 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
  * minimal base styles 
  */
 
-/* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
+/* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859
 body, select, input, textarea { color:#444; }
+*/
 
 /* maxvoltar.com/archive/-webkit-font-smoothing */
 html { -webkit-font-smoothing: antialiased; }
