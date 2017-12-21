@@ -175,7 +175,7 @@ def printPapers(summaryFile, header):
         if currentYear != row['Year']:
             currentYear = row['Year']
             out += "<H3 ALIGN=center><FONT FACE='arial,helvetica,sans-serif' COLOR=000000 SIZE=4>-- " + currentYear + " ("+str(years[currentYear])+") --</FONT></H3>\n"
-            out += "<br>\n"
+#             out += "<br>\n"
         summaryFile.write(out)
         simpleFile.write(out)
         simpleFile2.write(out)
@@ -343,7 +343,7 @@ def printPaperEntry(row, summaryFile, pubmed):
 
 def printSimpleEntry(row, simpleFile, pubmed):
 
-    out = '<P style="line-height: 6pt "><DL COMPACT>'
+    out = '<div id="simple"><P style="line-height: 6pt "><DL COMPACT>'
 
     if row['PMID']:
 
@@ -368,7 +368,7 @@ def printSimpleEntry(row, simpleFile, pubmed):
             citation_simple = row['citation'].split("). ")[1]
             out += author_year+" <q><i>"+row['title']+'</i></q> '+citation_simple
 
-    out += '</DL></P>\n'
+    out += '</DL></P></div>\n'
 
     simpleFile.write(out)
 
