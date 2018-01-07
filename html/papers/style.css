@@ -60,7 +60,7 @@ a {text-decoration:none;color:#ffffff;}
 #simple {
 	margin-left: 50px;
 	margin-right: 50px;
-	font-family:sans-serif;
+	text-indent: 2em;
 	font-size:13px;
 }
 
