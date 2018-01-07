@@ -366,9 +366,9 @@ def printSimpleEntry(row, simpleFile, pubmed):
         else:
             author_year = row['citation'].split(").")[0]+"). "
             citation_simple = row['citation'].split("). ")[1]
-            out += author_year+" <q><i>"+row['title']+'</i></q> '+citation_simple
+            out += author_year+" \""+row['title']+'\" '+citation_simple
 
-    out += '</DL></P></div>\n'
+    out += '</DL></P></div><br>'
 
     simpleFile.write(out)
 
