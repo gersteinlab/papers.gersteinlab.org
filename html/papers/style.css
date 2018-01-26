@@ -19,13 +19,13 @@ A { text-decoration:none; }
 .headerMenu A:active { color:#334499; }
 .headerMenu A:hover { color:#334499; }
 .headerMenu A:sansserif{ font-family:sans-serif,Arial,Helvetica; }
-.papersList { margin-left:0px; }
-.paperTitle { margin-left:50px; }
+/* .papersList { margin-left: 0px; } */
+/* .paperTitle { margin-left: 50px; } */
 .paperTitle A:link { color:#000000; }
 .paperTitle A:visited { color:#000000; }
 .paperTitle A:active { color:#000000; }
 .paperTitle A:hover { color:#000000; }
-.paperCite { margin-left:100px; }
+.paperCite { margin-left: 50px; }
 div#medline a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#933;padding:1px 3px;margin:2px;border:2px solid #933;}
 div#null a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#000;padding:1px 23px;margin:2px;border:2px solid #F0EEE4;}
 div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#3ba63c;padding:1px 3px;margin:2px;border:2px solid #3ba63c;}
@@ -55,12 +55,13 @@ a {text-decoration:none;color:#ffffff;}
 	width: 100%;
 	margin-top: 120px;
 	margin-left: 50px;
+	margin-right: 50px;
 	z-index: 1;
 }
 
 #simple {
-	margin-left: 50px;
-	margin-right: 50px;
+/* 	margin-left: 50px;
+	margin-right: 50px; */
 	text-indent: -25px;
 	font-size:13px;
 }
