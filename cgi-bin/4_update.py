@@ -520,7 +520,7 @@ printPapers(summaryFile, header)
 
 # Fix permissions to make both apache and sudo users run updates
 print "Fixing permissions for HTML files.."
-os.system("sudo chmod -R 775 ../html/papers/papers")
+os.system("chmod -R 775 ../html/papers/papers")
 
 print ""
 print "Done"
