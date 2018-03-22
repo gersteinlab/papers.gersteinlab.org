@@ -1,0 +1,17 @@
+#!/bin/sh
+PATH=/bin:/usr/bin
+export PATH
+osname=`uname -s | sed -e 's/_NT-.*$/_NT/; s/^MINGW[0-9]*/CYGWIN/'`
+compiled=$0."$osname"
+if [ -x "$compiled" ]
+then
+  exec "$compiled" "$@"
+else
+  echo ""
+  echo "Unable to locate rchive executable. Please execute the following:"
+  echo ""
+  echo "  ftp-cp ftp.ncbi.nlm.nih.gov /entrez/entrezdirect rchive.$osname.gz"
+  echo "  gunzip -f rchive.$osname.gz"
+  echo "  chmod +x rchive.$osname"
+  echo ""
+fi

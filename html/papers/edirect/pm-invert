@@ -1,0 +1,39 @@
+#!/bin/sh
+
+if [ "$#" -eq 0 ]
+then
+  echo "Must supply path for inverted files"
+  exit 1
+fi
+
+target="$1"
+
+target=${target%/}
+
+for fld in PAIR NORM STEM GRFT
+do
+  mkdir -p "$target/$fld"
+  recent=$(ls -r "$target"/$fld/*.inv.gz 2>/dev/null | head -n 1)
+  if [ -s "$recent" ]
+  then
+    rm "$recent"
+  fi
+done
+
+n=1
+echo *.e2x.gz |
+xargs -n 30 echo |
+while read files
+do
+  outfile=$(printf pubmed%02d.inv.gz $n)
+  n=$((n+1))
+  for fld in PAIR NORM STEM GRFT
+  do
+    if [ -f "$target/$fld/$outfile" ]
+    then
+      continue
+    fi
+    echo "$outfile $fld"
+    rchive -invert "$fld" $files | gzip -1 > "$target/$fld/$outfile"
+  done
+done
