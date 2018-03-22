@@ -68,19 +68,19 @@ header = '''<link rel="stylesheet" href="/style.css">
 <BR>
 <!-- Buttons for individual sections -->
 <FONT SIZE=+1 FACE='sans-serif, Arial, Helvetica' COLOR="#993333">
-	<SPAN CLASS="headerMenu"><A HREF="/">Main</A></SPAN>
-	&nbsp;&#8226;&nbsp;
-	<SPAN CLASS="headerMenu"><A HREF="/subject">By Subject</A></SPAN>
-	&nbsp;&#8226;&nbsp;
-	<SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Pubmed_query">Queries</A></SPAN>
-	&nbsp;&#8226;&nbsp;
-	<SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Papers_Page_Code">Code</A></SPAN>
-	&nbsp;&#8226;&nbsp;
-	<!--
-	<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Paper_search">Search</A></SPAN>
-	&nbsp;&#8226;&nbsp;
-	-->
-	<SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
+    <SPAN CLASS="headerMenu"><A HREF="/">Main</A></SPAN>
+    &nbsp;&#8226;&nbsp;
+    <SPAN CLASS="headerMenu"><A HREF="/subject">By Subject</A></SPAN>
+    &nbsp;&#8226;&nbsp;
+    <SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Pubmed_query">Queries</A></SPAN>
+    &nbsp;&#8226;&nbsp;
+    <SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Papers_Page_Code">Code</A></SPAN>
+    &nbsp;&#8226;&nbsp;
+    <!--
+    <SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Paper_search">Search</A></SPAN>
+    &nbsp;&#8226;&nbsp;
+    -->
+    <SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
 </FONT>
 <BR><BR>
 </CENTER>
@@ -108,7 +108,7 @@ def mergeData(master, pubmed):
                         citation = re.compile("\(\d+\)\.").sub("", citation)
                         citation = re.compile(":").sub(": ", citation)
                         citation = re.compile("&nbsp;").sub(" ", citation)
-			citation = re.compile("\.").sub("", citation)
+            citation = re.compile("\.").sub("", citation)
                         row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()+"."
 
                     row['authors'] = pubmed_row['Authors']
@@ -495,10 +495,10 @@ def printSubjectSummary(subject_spreadsheet, header):
 function showdh(n){
     for(var i=1;i<=''' + tableid + ''';i++){
         eval("dh" + i).className="unsel"
-		eval("menu"+i).style.display="none";
-	}
-	eval("dh"+n).className="sel"
-	eval("menu"+n).style.display="";
+        eval("menu"+i).style.display="none";
+    }
+    eval("dh"+n).className="sel"
+    eval("menu"+n).style.display="";
 }
 </script>
 '''

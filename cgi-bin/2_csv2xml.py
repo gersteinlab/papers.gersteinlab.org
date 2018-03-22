@@ -19,9 +19,7 @@ print
 import csv, subprocess
 
 def buildIdList(csv_file):
-
     idList=""
-
     with open(csv_file) as csvfile:
         reader = csv.DictReader(csvfile)
         for idx,row in enumerate(reader):
@@ -30,19 +28,7 @@ def buildIdList(csv_file):
                 idList += pmid+","
             elif pmid!="":
                 print "Warning: PMID", pmid, "is not a digit."
-
-    idList = idList[:-1]
-    return idList
-
-# def buildQuery(csv_file):
-#
-#     api_key = "7ed7d0b92dec9fd5e111d4da0f75e225cf09" ### new requirement as of May 2018, this is DL's API key
-#     start = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id="
-#     idList = buildIdList(csv_file)
-#     end = "&rettype=xml&retmode=file&api_key="+api_key
-#
-#     out = start + idList + end
-#     return out
+    return idList[:-1]
 
 def system_call(command):
     p = subprocess.Popen([command], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
@@ -54,27 +40,14 @@ def system_call(command):
 
 csv_file = "../html/papers/update/master_gsheet.csv"
 xml_file = "../html/papers/update/pubmed.xml"
-
 efetch_cmd = "../html/papers/edirect/efetch -db pubmed -format xml -id "+buildIdList(csv_file)
-
-# print "Building a PubMed query"
-# print
-# query = buildQuery(csv_file)
-# print query
-# print
-#
-# xml_file = "../html/papers/update/pubmed.xml"
-# cmd = curl+" '"+query+"' > "+xml_file
 
 print "Building a PubMed query using EDirect efetch"
 print efetch_cmd
-
 print
 
 print "Downloading PubMed results as XML.. Please Wait.."
-# cmd = "/usr/bin/curl '"+query+"' > "+xml_file
-cmd = efetch_cmd+" > "+xml_file
-system_call(cmd)
+system_call(efetch_cmd+" > "+xml_file)
 print
 
 print "File saved to", xml_file
