@@ -91,25 +91,22 @@ header = '''<link rel="stylesheet" href="/style.css">
 
 def mergeData(master, pubmed):
     for row in master:
-
-        if row['PMID']:
+        if row['PMID']: ### if PMID is present, use the data from pubmed
             for pubmed_row in pubmed:
                 # print 'Processing PMID: ' + pubmed_row['PMID']
                 if row['PMID'] == pubmed_row['PMID']:
 
-                    # if title is not user-provided
+                    # if title is not user-provided, get title from pubmed
                     if not row['title']:
-
-                        # get title from pubmed
                         row['title'] = pubmed_row['Title']
 
-                        # get citation from pubmed
-                        citation = pubmed_row['Citation']
-                        citation = re.compile("\(\d+\)\.").sub("", citation)
-                        citation = re.compile(":").sub(": ", citation)
-                        citation = re.compile("&nbsp;").sub(" ", citation)
-            citation = re.compile("\.").sub("", citation)
-                        row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()+"."
+                    # get citation from pubmed
+                    citation = pubmed_row['Citation']
+                    citation = re.compile("\(\d+\)\.").sub("", citation)
+                    citation = re.compile(":").sub(": ", citation)
+                    citation = re.compile("&nbsp;").sub(" ", citation)
+                    citation = re.compile("\.").sub("", citation)
+                    row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()+"."
 
                     row['authors'] = pubmed_row['Authors']
                     row['journal'] = pubmed_row['Journal']
@@ -118,7 +115,6 @@ def mergeData(master, pubmed):
                     row['pmcid'] = pubmed_row['PMCID']
 
 def write2csv(master):
-
     # write to CSV
     with open("../html/papers/update/merged.csv", "w") as f:
         writer = csv.writer(f)
