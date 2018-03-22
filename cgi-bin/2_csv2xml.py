@@ -21,9 +21,10 @@ import os
 import subprocess
 
 def buildQuery(csv_file):
+	api_key = "7ed7d0b92dec9fd5e111d4da0f75e225cf09" ### new requirement as of May 2018, this is DL's API key
 	start = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id="
 	pmids = ''
-	end = "&rettype=xml&retmode=file"
+	end = "&rettype=xml&retmode=file&api_key="+api_key
 	with open(csv_file) as csvfile:
 		reader = csv.DictReader(csvfile)
 		for row in reader:
