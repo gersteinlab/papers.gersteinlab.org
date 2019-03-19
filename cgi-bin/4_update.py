@@ -126,18 +126,28 @@ def write2csv(master):
 def printLink(row):
     out = ""
     out += "<DIV CLASS=\"paperCite\">"
+
+    ### add link to website
     if not row['website']:
         out += "<div id=\"null\"><A>&nbsp;</A></div>"
     else:
         out += "<div id=\"website\"><A HREF=\"" + row['website'].lstrip('\'') + "\">website</A></div>"
+
+    ### add link to preprint
     if not row['preprint']:
         out += "<div id=\"null\"><A>&nbsp;</A></div>"
     else:
         out += "<div id=\"preprint\"><A HREF=\"" + row['preprint'].lstrip('\'') + "\">preprint</A></div>"
+
+    ### add link to pubmed, altmetric badge
     if not row['PMID']:
         out += "<div id=\"null\"><A>&nbsp;</A></div>"
     else:
         out += "<div id=\"medline\"><A HREF=\"http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=" + row['PMID'].lstrip('\'') + "&dopt=Abstract\">medline</A></div>"
+
+        ### add altmetric badge
+        out += "<div data-badge-popover=\"right\" data-badge-type=\"4\" data-pmid=\"" + row['PMID'].lstrip('\'') + "\" data-condensed=\"true\" data-hide-no-mentions=\"true\" class=\"altmetric-embed\"></div>"
+
     out += "<div id=\"arrow-right\"><A HREF=\"/papers/" + row['labid'].lstrip('\'') + "/index-all.html\"></A></div>"
     out += "</DIV>\n<P style=\"margin: 35px;\" />\n"
     return out
@@ -150,11 +160,8 @@ def printPapers(summaryFile, header):
     out += "\n"
     out += "<CENTER>\n"
     out += "<FONT FACE='sans-serif, Arial, Helvetica'><FONT SIZE=+2 COLOR=993333>Main Scientific Publications</FONT>\n"
-#    out += "<br>\n"
     out += "<H3><FONT SIZE=\"4\" COLOR=\"#334499\">Total papers: " + str(len(master_spreadsheet)) + "</FONT></H3></FONT>\n"
-#    out += "<br>\n"
     out += "(Last updated " + timestamp + ")</CENTER>\n"
-#    out += "<br>\n"
 
     years = {}
     currentYear = 0
@@ -171,7 +178,7 @@ def printPapers(summaryFile, header):
         if currentYear != row['Year']:
             currentYear = row['Year']
             out += "<H3 ALIGN=center><FONT FACE='arial,helvetica,sans-serif' COLOR=000000 SIZE=4>-- " + currentYear + " ("+str(years[currentYear])+") --</FONT></H3>\n"
-#             out += "<br>\n"
+            
         summaryFile.write(out)
         simpleFile.write(out)
         simpleFile2.write(out)
