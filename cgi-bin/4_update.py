@@ -143,10 +143,13 @@ def printLink(row):
     if not row['PMID']:
         out += "<div id=\"null\"><A>&nbsp;</A></div>"
     else:
-        out += "<div id=\"medline\"><A HREF=\"http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=" + row['PMID'].lstrip('\'') + "&dopt=Abstract\">medline</A></div>"
+        out += "<div id=\"medline\">"
+        out += "<A HREF=\"http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=" + row['PMID'].lstrip('\'') + "&dopt=Abstract\">medline</A>"
 
         ### add altmetric badge
         out += "<div id=\"medline\" data-badge-popover=\"right\" data-badge-type=\"4\" data-pmid=\"" + row['PMID'].lstrip('\'') + "\" data-condensed=\"true\" data-hide-no-mentions=\"true\" class=\"altmetric-embed\"></div>"
+        
+        out += "</div>"
 
     out += "<div id=\"arrow-right\"><A HREF=\"/papers/" + row['labid'].lstrip('\'') + "/index-all.html\"></A></div>"
     out += "</DIV>\n<P style=\"margin: 35px;\" />\n"
