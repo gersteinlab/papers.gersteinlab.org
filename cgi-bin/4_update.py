@@ -146,7 +146,7 @@ def printLink(row):
         out += "<div id=\"medline\"><A HREF=\"http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=" + row['PMID'].lstrip('\'') + "&dopt=Abstract\">medline</A></div>"
 
         ### add altmetric badge
-        out += "<div data-badge-popover=\"right\" data-badge-type=\"4\" data-pmid=\"" + row['PMID'].lstrip('\'') + "\" data-condensed=\"true\" data-hide-no-mentions=\"true\" class=\"altmetric-embed\"></div>"
+        out += "<div id=\"medline\" data-badge-popover=\"right\" data-badge-type=\"4\" data-pmid=\"" + row['PMID'].lstrip('\'') + "\" data-condensed=\"true\" data-hide-no-mentions=\"true\" class=\"altmetric-embed\"></div>"
 
     out += "<div id=\"arrow-right\"><A HREF=\"/papers/" + row['labid'].lstrip('\'') + "/index-all.html\"></A></div>"
     out += "</DIV>\n<P style=\"margin: 35px;\" />\n"
