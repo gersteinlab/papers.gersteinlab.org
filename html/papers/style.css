@@ -31,6 +31,7 @@ div#null a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;co
 div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#3ba63c;padding:1px 3px;margin:2px;border:2px solid #3ba63c;}
 div#preprint a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#349;padding:1px 3px;margin:2px;border:2px solid #349;}
 div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;width:0;height:0;margin:5 0 0 2;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #F0EEE4;}
+div#altmetric {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#933;padding:5px 1px;}
 
 .unsel{background-color:#ffffff; background-position:top; background-repeat:repeat-x; color:#FFFFFF; font-weight:normal;}
 .sel {background-color:#3b5998; color:#FFFFFF; font-weight:normal;}
