@@ -36,10 +36,10 @@ subjectPath = "../html/papers/subject/"
 subjectFile = open("../html/papers/subject/index.html", 'w')
 subjectSummaryFile = open("../html/papers/subject/index.html", 'w')
 
-metricPath = "../html/papers/metric/"
-if not os.path.exists(metricPath):
-    os.makedirs(metricPath)
-metricFile = open("../html/papers/metric/index.html", 'w')
+metricsPath = "../html/papers/metrics/"
+if not os.path.exists(metricsPath):
+    os.makedirs(metricsPath)
+metricsFile = open("../html/papers/metrics/index.html", 'w')
 
 def makeHeader(title):
     header = '''<HTML>
@@ -84,13 +84,11 @@ def makeHeader(title):
                 &nbsp;&#8226;&nbsp;
                 <SPAN CLASS="headerMenu"><A HREF="/subject">By Subject</A></SPAN>
                 &nbsp;&#8226;&nbsp;
-                <SPAN CLASS="headerMenu"><A HREF="/metric">Metric</A></SPAN>
+                <SPAN CLASS="headerMenu"><A HREF="/metrics">Metrics</A></SPAN>
                 &nbsp;&#8226;&nbsp;
                 <SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Pubmed_query">Queries</A></SPAN>
                 &nbsp;&#8226;&nbsp;
                 <SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Papers_Page_Code">Code</A></SPAN>
-                &nbsp;&#8226;&nbsp;
-                <SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Paper_search">Search</A></SPAN>
                 &nbsp;&#8226;&nbsp;
                 <SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
             </FONT>
@@ -222,7 +220,7 @@ def printPapers(summaryFile):
     simpleFile.write("</DIV>\n</BODY>\n</HTML>")
     simpleFile2.write("</DIV>\n</BODY>\n</HTML>")
 
-def printPaperMetric(summaryFile):
+def printPaperMetrics(summaryFile):
     out = makeHeader("Gerstein Lab Publications")
     out += '''
     <CENTER>
@@ -236,7 +234,7 @@ def printPaperMetric(summaryFile):
         </FONT>
         (Last updated ''' + timestamp + ''')
     </CENTER>
-    <table style="width:80%" align="center" cellpadding="5">
+    <table style="width:90%" align="center" cellpadding="5">
     '''
 
     years = {}
@@ -271,7 +269,7 @@ def printPaperMetric(summaryFile):
             <th>
                 <div id="altmetric" data-badge-popover="right" data-badge-type="donut" data-pmid="''' + row['PMID'].lstrip('\'') + '''" data-condensed="true" data-hide-no-mentions="true" class="altmetric-embed"></div>
             </th>
-            <th>
+            <td>
         '''
 
         # print title and citation
@@ -281,19 +279,24 @@ def printPaperMetric(summaryFile):
                 <FONT SIZE=+1>
                     <B><A HREF="/papers/''' + row['labid'].lstrip('\'') + '''/index.html">''' + row['title'].lstrip('\'') + '''</A></B>
                 </FONT>
-            </DIV>'''
+            </DIV>
+            '''
         else:
             print "Warning: Title Empty!"
             print row
 
         if row['citation']:
-            out += row['citation'].lstrip('\'')
+            out += '''
+            <DIV CLASS="paperCite">
+                ''' + row['citation'].lstrip('\'') + '''
+            </DIV>
+            '''
         else:
             print "Warning: Citation Empty!"
             print row
 
         out += '''
-            </th>
+            </td>
         </tr>
         '''
     
@@ -303,7 +306,7 @@ def printPaperMetric(summaryFile):
     </BODY>
     </HTML>
     '''
-    metricFile.write(out)
+    metricsFile.write(out)
 
 def printEntrySummary(row, pubmed):
 
@@ -619,8 +622,8 @@ printSubject(master_spreadsheet)
 print "Building Paper HTML files.."
 printPapers(summaryFile)
 
-print "Building Paper metric HTML files.."
-printPaperMetric(summaryFile)
+print "Building Paper metrics HTML files.."
+printPaperMetrics(summaryFile)
 
 # Fix permissions to make both apache and sudo users run updates
 print "Fixing permissions for HTML files.."
