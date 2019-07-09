@@ -249,37 +249,37 @@ def printPaperMetrics(summaryFile):
 
     for row in master_spreadsheet:
         pubmed = pubmed_spreadsheet
+        
+        ### add year at the top of each year block
         if currentYear != row['Year']:
             currentYear = row['Year']
             out += '''
-            <tr valign="bottom">
+        <tr valign="bottom">
             <th></th>
             <th>
-            <H3 align="left">
-                <br><br>
-                <i>
-                    <FONT FACE='arial,helvetica,sans-serif' COLOR=000000 SIZE=4>''' + currentYear + " ("+str(years[currentYear])+''')</FONT>
-                </i>
-            </H3>
+                <H3 align="left">
+                    <br><br>
+                    <i>
+                        <FONT FACE='arial,helvetica,sans-serif' COLOR=000000 SIZE=4>''' + currentYear + " ("+str(years[currentYear])+''')</FONT>
+                    </i>
+                </H3>
             </th>
-            </tr>
-            '''
+        </tr>'''
+            
         out += '''
         <tr align=left valign=middle>
-            <th>
-        '''
+            <th>'''
+        
         if row['doi']:
             out += '''
                 <div id="altmetric" data-badge-popover="right" data-badge-type="donut" data-doi="''' + row['doi'].lstrip('\'') + '''" data-condensed="true" data-hide-no-mentions="true" class="altmetric-embed"></div>
             </th>
-            <td>
-            '''
+            <td>'''
         else:
             out += '''
                 <div id="altmetric" data-badge-popover="right" data-badge-type="donut" data-pmid="''' + row['PMID'].lstrip('\'') + '''" data-condensed="true" data-hide-no-mentions="true" class="altmetric-embed"></div>
             </th>
-            <td>
-            '''
+            <td>'''
 
         # print title and citation
         if row['title']:
