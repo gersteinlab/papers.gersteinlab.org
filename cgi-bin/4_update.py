@@ -267,10 +267,19 @@ def printPaperMetrics(summaryFile):
         out += '''
         <tr align=left valign=middle>
             <th>
+        '''
+        if row['doi']:
+            out += '''
+                <div id="altmetric" data-badge-popover="right" data-badge-type="donut" data-doi="''' + row['doi'].lstrip('\'') + '''" data-condensed="true" data-hide-no-mentions="true" class="altmetric-embed"></div>
+            </th>
+            <td>
+            '''
+        else:
+            out += '''
                 <div id="altmetric" data-badge-popover="right" data-badge-type="donut" data-pmid="''' + row['PMID'].lstrip('\'') + '''" data-condensed="true" data-hide-no-mentions="true" class="altmetric-embed"></div>
             </th>
             <td>
-        '''
+            '''
 
         # print title and citation
         if row['title']:
