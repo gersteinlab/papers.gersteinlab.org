@@ -33,8 +33,8 @@ master_csv_file = "../html/papers/update/master_gsheet.csv"
 subject_csv_file = "../html/papers/update/subject_gsheet.csv"
 
 curl = "/usr/bin/curl"
-cmd1 = curl+" '"+master_gsheet_csv_url+"' > "+master_csv_file
-cmd2 = curl+" '"+subject_gsheet_csv_url+"' > "+subject_csv_file
+cmd1 = curl+" -L '"+master_gsheet_csv_url+"' > "+master_csv_file
+cmd2 = curl+" -L '"+subject_gsheet_csv_url+"' > "+subject_csv_file
 
 print "Downloading Master Google spreadsheet as CSV:", cmd1
 system_call(cmd1)
