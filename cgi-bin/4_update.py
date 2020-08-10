@@ -41,6 +41,34 @@ if not os.path.exists(metricsPath):
     os.makedirs(metricsPath)
 metricsFile = open("../html/papers/metrics/index.html", 'w')
 
+# Read funding subjects
+funding_subject = []
+for row in subject_spreadsheet:
+    if 'Grants' in row['Category'].strip():
+        funding_subject.append(row['LabID'].strip())
+
+# Read image list (https://stackoverflow.com/questions/11023530/python-to-list-http-files-and-directories)
+import requests
+import re
+
+url = 'http://www.gersteinlab.org/media/images/thumbs/'
+
+response = requests.get(url)
+if response.ok:
+    response_text = response.text
+else:
+    response.raise_for_status()
+   
+re_raw=re.findall('<a href=.*</a>',response_text)
+images_name = [f.split('"')[1] for f in re_raw]
+
+images_url_thumbnail = [url+f for f in images_name]
+images_url_gallery = ['http://www.gersteinlab.org/media/images/'+f for f in images_name]
+images_id = [f.split('_')[0] for f in images_name]
+images_dict_thumbnail = dict(zip(images_id,images_url_thumbnail))
+images_dict_gallery =  dict(zip(images_id,images_url_gallery))
+
+# Write HTML
 def makeHeader(title):
     header = '''<HTML>
     <HEAD>
@@ -420,7 +448,16 @@ def printEntryExtended(row, pubmed):
     if not row['subject']:
         out += "<tr><td width=100><b><font color=gray>subject</font></b></td><td><b><font color=#000077>&nbsp;</font></b></td></tr>\n"
     else:
-        subjects = row['subject'].split(',')
+        subjects_all = row['subject'].split(',')
+        subjects_all = [i.strip() for i in subjects_all]
+        subjects = []
+        fundings = []
+        for subject in subjects_all:
+            if subject in funding_subject:
+                fundings.append(subject)
+            else:
+                subjects.append(subject)
+
         num_subjects = len(subjects)
         out += '<tr><td width=100><b><font color=gray>subject</font></b></td><td><b><font color=#000077>'
         subject_count = 0
@@ -431,12 +468,33 @@ def printEntryExtended(row, pubmed):
                 out += ', '
         out += '</font></b></td></tr>\n'
 
+        num_fundings = len(fundings)
+        out += '<tr><td width=100><b><font color=gray>funding</font></b></td><td><b><font color=#000077>'
+        funding_count = 0
+        for subject in fundings:
+            out += '<A HREF="/subject/' + subject.lstrip('\' ') + '">' + subject.lstrip('\' ') + '</A>'
+            funding_count += 1
+            if funding_count < num_fundings:
+                out += ', '
+        out += '</font></b></td></tr>\n'
+
     if not row['website']:
         out += "<tr><td width=100><b><font color=gray>website</font></b></td><td><b><font color=#000077>&nbsp;</font></b></td></tr>\n"
     else:
         out += '<tr><td width=100><b><font color=gray>website</font></b></td><td><b><font color=#000077><A HREF="' + row['website'].lstrip('\'') + '">' + row['website'].lstrip('\'') + '</A></font></b></td></tr>\n'
 
-    out += "</table><br><font color=gray>Unused tags: <i>e-print footnote grant ignore preprint sortval target website2</i></font><hr><a href='/'>Return to papers index</a><br>&nbsp;</blockquote>\n</BODY>\n</HTML>"
+    if not row['preprint']:
+        out += "<tr><td width=100><b><font color=gray>preprint</font></b></td><td><b><font color=#000077>&nbsp;</font></b></td></tr>\n"
+    else:
+        out += '<tr><td width=100><b><font color=gray>preprint</font></b></td><td><b><font color=#000077><A HREF="' + row['preprint'].lstrip('\'') + '">' + row['preprint'].lstrip('\'') + '</A></font></b></td></tr>\n'
+
+    if row['labid'] and row['labid'] in images_dict_thumbnail:
+	out += '<tr><td width=100><b><font color=gray>image</font></b></td><td><b><font color=#000077><A HREF="'+images_dict_gallery[row['labid']]+'"><img src="'+images_dict_thumbnail[row['labid']]+'" alt="Image"></A></font></b></td></tr>\n'
+
+    if row['footnote']:
+	out += '<tr><td width=100><b><font color=gray>footnote</font></b></td><td><b><font color=#000077>' + row['footnote'].lstrip('\'') + '</A></font></b></td></tr>\n'
+
+    out += "</table><br><font color=gray>Unused tags: <i>e-print grant ignore sortval target website2</i></font><hr><a href='/'>Return to papers index</a><br>&nbsp;</blockquote>\n</BODY>\n</HTML>"
     entryExtendedFile.write(out)
 
 def printPaperEntry(row, summaryFile, pubmed):
