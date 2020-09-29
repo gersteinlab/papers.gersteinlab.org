@@ -182,7 +182,13 @@ def printLink(row):
         out += "<div id=\"null\"><A>&nbsp;</A></div>"
     else:
         out += "<div id=\"medline\"><A HREF=\"http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=" + row['PMID'].lstrip('\'') + "&dopt=Abstract\">medline</A></div>"
-        
+
+    ### add additional links (from website2 column)
+    if not row['website2']:
+        out += "<div id=\"null\"><A>&nbsp;</A></div>"
+    else:
+        out += "<div id=\"link\"><A HREF=\"" + row['website2'].lstrip('\'') + "\">link</A></div>"
+           
         # ### add altmetric badge
         # out += "<div id=\"altmetric\" data-badge-popover=\"right\" data-badge-type=\"4\" data-pmid=\"" + row['PMID'].lstrip('\'') + "\" data-condensed=\"true\" data-hide-no-mentions=\"true\" class=\"altmetric-embed\"></div>"
 
@@ -483,6 +489,10 @@ def printEntryExtended(row, pubmed):
     else:
         out += '<tr><td width=100><b><font color=gray>website</font></b></td><td><b><font color=#000077><A HREF="' + row['website'].lstrip('\'') + '">' + row['website'].lstrip('\'') + '</A></font></b></td></tr>\n'
 
+    if not row['website2']:
+        out += "<tr><td width=100><b><font color=gray>link</font></b></td><td><b><font color=#000077>&nbsp;</font></b></td></tr>\n"
+    else:
+        out += '<tr><td width=100><b><font color=gray>link</font></b></td><td><b><font color=#000077><A HREF="' + row['website2'].lstrip('\'') + '">' + row['website2'].lstrip('\'') + '</A></font></b></td></tr>\n'
     if not row['preprint']:
         out += "<tr><td width=100><b><font color=gray>preprint</font></b></td><td><b><font color=#000077>&nbsp;</font></b></td></tr>\n"
     else:
