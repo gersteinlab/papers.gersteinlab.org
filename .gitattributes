@@ -1,0 +1,9 @@
+# Server is Linux: keep LF so CGI shebang lines (#!/usr/bin/python) keep working
+* text=auto eol=lf
+
+*.ico binary
+*.gif binary
+*.jpg binary
+*.png binary
+*.pdf binary
+*.gz binary

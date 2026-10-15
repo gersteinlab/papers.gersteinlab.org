@@ -1,14 +1,41 @@
+# ALLOWLIST: this repo is checked out at /var/www on the production server,
+# next to PDFs, PPTs, images, spreadsheet data and service account keys that
+# must never be pushed. Everything is ignored unless explicitly allowed below.
+# To version a new file, add a "!" rule for it here on purpose.
+
+# 1. Ignore everything at the top level, then allow the repo's own files
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+
+# 2. cgi-bin: only scripts
+!/cgi-bin/
+/cgi-bin/*
+!/cgi-bin/*.py
+!/cgi-bin/*.pl
+
+# 3. html: only the papers site, and only hand-written code/config in it
+!/html/
+/html/*
+!/html/papers/
+/html/papers/*
+!/html/papers/style.css
+!/html/papers/robots.txt
+!/html/papers/edirect/
+
+# 4. html/papers/update: legacy scripts only (no csv/xml/tsv/tab data)
+!/html/papers/update/
+/html/papers/update/*
+!/html/papers/update/*.py
+!/html/papers/update/*.sed
+
+# 5. Never, anywhere, even inside allowed folders
+*.json
 *.pyc
-html/papers/papers/
-html/papers/subject/
-html/papers/*.html
-html/papers/update/*.csv
-html/papers/update/*.tmp
-html/papers/update/*.tsv
-html/papers/update/*.xml
-html/papers/e-print
-html/papers/e-print2/
-html/papers/*.jpg
-html/papers/*.gif
-error/
-icons/
+*.pdf
+*.ppt
+*.pptx
+*.csv
+*.xml
+*.tab
