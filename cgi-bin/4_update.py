@@ -118,7 +118,7 @@ def makeHeader(title):
                 &nbsp;&#8226;&nbsp;
                 <SPAN CLASS="headerMenu"><A HREF="http://info.gersteinlab.org/Papers_Page_Code">Code</A></SPAN>
                 &nbsp;&#8226;&nbsp;
-                <SPAN CLASS="headerMenu"><A HREF="http://wiki.gersteinlab.org/pubinfo/Other_Papers">Other Writings</A></SPAN>
+                <SPAN CLASS="headerMenu"><A HREF="https://info.gersteinlab.org/Other_Papers">Other Writings</A></SPAN>
             </FONT>
             <BR><BR>
         </CENTER>
@@ -139,13 +139,16 @@ def mergeData(master, pubmed):
                         row['title'] = pubmed_row['Title']
 
                     # get citation from pubmed
-                    citation = pubmed_row['Citation']
-                    citation = re.compile("\(\d+\)\.").sub("", citation)
-                    citation = re.compile(":").sub(": ", citation)
-                    citation = re.compile("&nbsp;").sub(" ", citation)
-                    citation = re.compile("\.").sub("", citation)
-                    row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()+"."
-
+                    if row['Special_Reference'] == '':
+                        row['Special_Reference'] = 0
+                    if int(row['Special_Reference']) & 1 == 0:
+                        citation = pubmed_row['Citation']
+                        citation = re.compile("\(\d+\)\.").sub("", citation)
+                        citation = re.compile(":").sub(": ", citation)
+                        citation = re.compile("&nbsp;").sub(" ", citation)
+                        citation = re.compile("\.").sub("", citation)
+                        row['citation'] = pubmed_row['Authors'].lstrip('\'')+" ("+row['Year']+"). "+citation.lstrip('\'').strip()+"."
+ 
                     row['authors'] = pubmed_row['Authors']
                     row['journal'] = pubmed_row['Journal']
                     row['pages'] = pubmed_row['Pages'].lstrip("#")
@@ -156,10 +159,10 @@ def write2csv(master):
     # write to CSV
     with open("../html/papers/update/merged.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow( ('labid', 'PMID', 'title', 'citation', 'preprint', 'subject', 'website', 'Year', 'footnote', 'website2', 'coreTool') )
+        writer.writerow( ('labid', 'PMID', 'title', 'citation', 'preprint', 'subject', 'website', 'Year', 'footnote', 'website2', 'coreTool', 'Special_Reference') )
 
         for row in master:
-            writer.writerow( (row['labid'],  row['PMID'], row['title'], row['citation'], row['preprint'], row['subject'], row['website'], row['Year'], row['footnote'], row['website2'], row['coreTool']) )
+            writer.writerow( (row['labid'],  row['PMID'], row['title'], row['citation'], row['preprint'], row['subject'], row['website'], row['Year'], row['footnote'], row['website2'], row['coreTool'], row['Special_Reference']) )
 
 def printLink(row):
 
@@ -239,12 +242,16 @@ def printPapers(summaryFile):
 
         out=""
 
-        # print each paper entry
-        printPaperEntry(row, summaryFile, pubmed)
+        if row['Special_Reference'] == '':
+            row['Special_Reference'] = 0;
 
-        # generate simple.html and papers-simple.html
-        printSimpleEntry(row, simpleFile, pubmed)
-        printSimpleEntry(row, simpleFile2, pubmed)
+        if int(row['Special_Reference']) & 2 == 0:
+            # print each paper entry
+            printPaperEntry(row, summaryFile, pubmed)
+
+            # generate simple.html and papers-simple.html
+            printSimpleEntry(row, simpleFile, pubmed)
+            printSimpleEntry(row, simpleFile2, pubmed)
 
         printEntrySummary(row, pubmed)
         printEntryExtended(row, pubmed)
@@ -499,10 +506,10 @@ def printEntryExtended(row, pubmed):
         out += '<tr><td width=100><b><font color=gray>preprint</font></b></td><td><b><font color=#000077><A HREF="' + row['preprint'].lstrip('\'') + '">' + row['preprint'].lstrip('\'') + '</A></font></b></td></tr>\n'
 
     if row['labid'] and row['labid'] in images_dict_thumbnail:
-	out += '<tr><td width=100><b><font color=gray>image</font></b></td><td><b><font color=#000077><A HREF="'+images_dict_gallery[row['labid']]+'"><img src="'+images_dict_thumbnail[row['labid']]+'" alt="Image"></A></font></b></td></tr>\n'
+        out += '<tr><td width=100><b><font color=gray>image</font></b></td><td><b><font color=#000077><A HREF="'+images_dict_gallery[row['labid']]+'"><img src="'+images_dict_thumbnail[row['labid']]+'" alt="Image"></A></font></b></td></tr>\n'
 
     if row['footnote']:
-	out += '<tr><td width=100><b><font color=gray>footnote</font></b></td><td><b><font color=#000077>' + row['footnote'].lstrip('\'') + '</A></font></b></td></tr>\n'
+        out += '<tr><td width=100><b><font color=gray>footnote</font></b></td><td><b><font color=#000077>' + row['footnote'].lstrip('\'') + '</A></font></b></td></tr>\n'
 
     out += "</table><br><font color=gray>Unused tags: <i>e-print grant ignore sortval target website2</i></font><hr><a href='/'>Return to papers index</a><br>&nbsp;</blockquote>\n</BODY>\n</HTML>"
     entryExtendedFile.write(out)

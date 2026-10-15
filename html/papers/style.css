@@ -1,5 +1,6 @@
 /* 
   style.css contains a reset, font normalization and some base styles.
+
   
   credit is left where credit is due.
   additionally, much inspiration was taken from these projects:
@@ -30,6 +31,7 @@ div#medline a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left
 div#null a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#000;padding:1px 23px;margin:2px;border:2px solid #F0EEE4;}
 div#website a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#3ba63c;padding:1px 3px;margin:2px;border:2px solid #3ba63c;}
 div#preprint a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#349;padding:1px 3px;margin:2px;border:2px solid #349;}
+div#link a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#800080;padding:1px 15px;margin:2px;border:2px solid #800080;}
 div#arrow-right a {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;width:0;height:0;margin:5 0 0 2;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #F0EEE4;}
 div#altmetric {font-size:small;font-family:sans-serif,Arial,Helvetica;float:left;color:#933;padding:5px 1px;}
 
