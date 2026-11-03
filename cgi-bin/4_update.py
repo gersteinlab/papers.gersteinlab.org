@@ -164,6 +164,29 @@ def write2csv(master):
         for row in master:
             writer.writerow( (row['labid'],  row['PMID'], row['title'], row['citation'], row['preprint'], row['subject'], row['website'], row['Year'], row['footnote'], row['website2'], row['coreTool'], row['Special_Reference']) )
 
+def getExtraLinks(row):
+    ### extra buttons from sheet column pairs "extraN" (label) / "ExtraN link" (url), same as lectures
+    ### any number of pairs is picked up; a button is made only when the link is filled, blank label = "extra"
+    links = []
+    for key in row:
+        if key is None:
+            continue
+        m = re.match(r'^Extra(\d+) link$', key.strip())
+        if not m or not row[key]:
+            continue
+        url = row[key].lstrip('\'').strip()
+        if not url:
+            continue
+        label = ''
+        for labelKey in row:
+            if labelKey is not None and labelKey.strip() == 'extra' + m.group(1) and row[labelKey]:
+                label = row[labelKey].lstrip('\'').strip()
+        if not label:
+            label = 'extra'
+        links.append((int(m.group(1)), label, url))
+    links.sort()
+    return [(label, url) for (n, label, url) in links]
+
 def printLink(row):
 
     out = "<DIV CLASS=\"paperCite\">"
@@ -191,7 +214,11 @@ def printLink(row):
         out += "<div id=\"null\"><A>&nbsp;</A></div>"
     else:
         out += "<div id=\"link\"><A HREF=\"" + row['website2'].lstrip('\'') + "\">link</A></div>"
-           
+
+    ### add extra buttons (from extraN / ExtraN link columns)
+    for (label, url) in getExtraLinks(row):
+        out += "<div id=\"extra\"><A HREF=\"" + url + "\">" + label + "</A></div>"
+
         # ### add altmetric badge
         # out += "<div id=\"altmetric\" data-badge-popover=\"right\" data-badge-type=\"4\" data-pmid=\"" + row['PMID'].lstrip('\'') + "\" data-condensed=\"true\" data-hide-no-mentions=\"true\" class=\"altmetric-embed\"></div>"
 
@@ -504,6 +531,9 @@ def printEntryExtended(row, pubmed):
         out += "<tr><td width=100><b><font color=gray>preprint</font></b></td><td><b><font color=#000077>&nbsp;</font></b></td></tr>\n"
     else:
         out += '<tr><td width=100><b><font color=gray>preprint</font></b></td><td><b><font color=#000077><A HREF="' + row['preprint'].lstrip('\'') + '">' + row['preprint'].lstrip('\'') + '</A></font></b></td></tr>\n'
+
+    for (label, url) in getExtraLinks(row):
+        out += '<tr><td width=100><b><font color=gray>' + label + '</font></b></td><td><b><font color=#000077><A HREF="' + url + '">' + url + '</A></font></b></td></tr>\n'
 
     if row['labid'] and row['labid'] in images_dict_thumbnail:
         out += '<tr><td width=100><b><font color=gray>image</font></b></td><td><b><font color=#000077><A HREF="'+images_dict_gallery[row['labid']]+'"><img src="'+images_dict_thumbnail[row['labid']]+'" alt="Image"></A></font></b></td></tr>\n'

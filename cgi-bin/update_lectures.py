@@ -278,7 +278,7 @@ def printButtons(row):
 	if row['extra4 link']:
 		out += "<span class=\"buttoncontainer\">"
 		out += "<A HREF=\"" + row['extra4 link'].lstrip('\'') + "\"><IMG BORDER=\"0\" HEIGHT=\"23\" WIDTH=\"56\" SRC=\"/null.gif\"></A>"
-		if not row['extra3']:
+		if not row['extra4']:
 			out += "<span class=\"buttontext\"><A HREF=\"" + row['extra4 link'].lstrip('\'') + "\">extra</A>"
 		else:
 			out += "<span class=\"buttontext\"><A HREF=\"" + row['extra4 link'].lstrip('\'') + "\">"+ row['extra4'].lstrip('\'') + "</A>"
